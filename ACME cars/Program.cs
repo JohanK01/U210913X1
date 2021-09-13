@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ACME_cars
 {
@@ -6,40 +7,48 @@ namespace ACME_cars
     {
         static void Main(string[] args)
         {
-            while (true)
+            List<Bsalu> Bilar = new List<Bsalu>();
+            wrong:
+            Console.WriteLine("X = Exit, N=Add Car, E=Edit existing Car, D=Remove Car, S=Show all cars");
+            string orden = Console.ReadLine();
+
+            switch (orden)
             {
-                Console.WriteLine("X = Exit, N=Add Car, E=Edit existing Car, D=Remove Car, S=Show all cars");
-                string orden = Console.ReadLine();
-
-                if (orden == "x")
-                {
+                case "x":
+                    Console.WriteLine("avsluta");
                     break;
-                }
-                if (orden == "n || N")
-                {
-                    Console.WriteLine("Vilken modell");
-                }
-                if (orden == "e || E")
-                {
-                    Console.WriteLine("Vilken bil vill du ändra");
-                }
-                if (orden == "d || D")
-                {
-                    Console.WriteLine("Vilken bil vill du ta bort");
-                }
-                if (orden == " s ||S")
-                {
-                    Console.WriteLine("Visa alla bilar");
-                }
-            }
 
+                case "n":
+                    Console.WriteLine("Märke, modell och färg");
+                    break;
+
+                case "e":
+                    Console.WriteLine("vilken bil vill du ändra på");
+                    break;
+
+                case "d":
+                    Console.WriteLine("Vilken bil vill du ta bort");
+                    break;
+
+                case "s":
+                    Console.WriteLine("Här är alla bilar vi har inne");
+                    break;
+
+            }
+            if (orden != "n" + "x" + "e" + "d" + "s")
+            {
+                Console.WriteLine("Skriv igen");
+                goto wrong;
+            }
+            
         }
     }
-
-    public class Bsalu
-    {
-
-
-
-    }
 }
+public class Bsalu
+{
+    public string make;
+    public string modell;
+    public string color;
+}
+
+
