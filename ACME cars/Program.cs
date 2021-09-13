@@ -20,6 +20,14 @@ namespace ACME_cars
 
                 case "n":
                     Console.WriteLine("Märke, modell och färg");
+                    
+                        Bilar.Add(new Bsalu()
+                        {
+                            make = Console.ReadLine(),
+                            modell = Console.ReadLine(),
+                            color = Console.ReadLine()
+                        });
+                    Console.WriteLine("Bilen är inlaggd");
                     break;
 
                 case "e":
@@ -33,13 +41,12 @@ namespace ACME_cars
                 case "s":
                     Console.WriteLine("Här är alla bilar vi har inne");
                     break;
+                default:
+                    Console.WriteLine("Försök igen");
+                    goto wrong;
 
             }
-            if (orden != "n" + "x" + "e" + "d" + "s")
-            {
-                Console.WriteLine("Skriv igen");
-                goto wrong;
-            }
+            goto wrong;
             
         }
     }
