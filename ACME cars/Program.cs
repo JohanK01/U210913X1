@@ -41,14 +41,39 @@ namespace ACME_cars
                         {
                             Console.WriteLine($"{b.make} {b.modell} {b.color}");
                         }
-                        int edit = Convert.ToInt32(Console.ReadLine());
-                        
-                        Bilar.Insert(edit-1, new Bsalu()
+                        string EditWhat = Console.ReadLine();
+                        switch (EditWhat)
                         {
-                            make = Console.ReadLine(),
-                            modell = Console.ReadLine(),
-                            color = Console.ReadLine()
-                        });
+                            case "make":
+                                int EditMake = Convert.ToInt32(Console.ReadLine());
+                                Bilar.Insert(EditMake - 1, new Bsalu()
+                                {
+                                    make = Console.ReadLine(),
+                                });
+                                break;
+
+                            case "modell":
+                                int EditModell = Convert.ToInt32(Console.ReadLine());
+                                Bilar.Insert(EditModell - 1, new Bsalu()
+                                {
+                                    modell = Console.ReadLine(),
+                                });
+                                break;
+
+                            case "color":
+                                int EditColor = Convert.ToInt32(Console.ReadLine());
+                                Bilar.Insert(EditColor - 1, new Bsalu()
+                                {
+                                    color = Console.ReadLine(),
+                                });
+                                break;
+
+
+                            default:
+                                Console.WriteLine("Måste vara make, modell, eller color");
+                                break;
+                        }
+
                         Console.WriteLine("Bilen är ändrad\n");
                         break;
 
