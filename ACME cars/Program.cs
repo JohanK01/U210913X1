@@ -29,26 +29,38 @@ namespace ACME_cars
                             make = Console.ReadLine(),
                             modell = Console.ReadLine(),
                             color = Console.ReadLine()
-                            
-                          
+
+
                         });
                         Console.WriteLine("Bilen är inlaggd\n");
                         break;
 
                     case "e": // ändrar vilken bil man vill
                         Console.WriteLine("vilken bil vill du ändra på");
-
+                        foreach (Bsalu b in Bilar)
+                        {
+                            Console.WriteLine($"{b.make} {b.modell} {b.color}");
+                        }
+                        int edit = Convert.ToInt32(Console.ReadLine());
+                        
+                        Bilar.Insert(edit-1, new Bsalu()
+                        {
+                            make = Console.ReadLine(),
+                            modell = Console.ReadLine(),
+                            color = Console.ReadLine()
+                        });
+                        Console.WriteLine("Bilen är ändrad\n");
                         break;
 
                     case "d": // vilken bil man vill ta bort
-                        Console.WriteLine("Vilken bil vill du ta bort"); 
+                        Console.WriteLine("Vilken bil vill du ta bort");
                         foreach (Bsalu b in Bilar)
                         {
                             Console.WriteLine($"{b.make} {b.modell} {b.color}");
                         }
                         int remove = Convert.ToInt32(Console.ReadLine());
-                        Bilar.RemoveAt(remove -1);
-                        
+                        Bilar.RemoveAt(remove - 1);
+                        Console.WriteLine("bilen är borttagen\n");
                         break;
 
                     case "s": // visar alla bilar du har laggt in
@@ -57,6 +69,7 @@ namespace ACME_cars
                         {
                             Console.WriteLine($"{b.make} {b.modell} {b.color}");
                         }
+                        Console.WriteLine("\n");
                         break;
                     case "cls":
                         Console.Clear();
@@ -79,7 +92,7 @@ public class Bsalu
     public string modell { get; set; }
     public string color { get; set; }
 
- 
+
 }
 
 
