@@ -15,13 +15,13 @@ namespace ACME_cars
                 string orden = Console.ReadLine();
                 switch (orden)
                 {
-                    case "x":
+                    case "x": // avslutar programmet
                         Console.WriteLine("avsluta");
                         a = false;
 
                         break;
 
-                    case "n":
+                    case "n": // Lägger in bilar i listan
                         Console.WriteLine("Märke, modell och färg");
 
                         Bilar.Add(new Bsalu()
@@ -29,19 +29,29 @@ namespace ACME_cars
                             make = Console.ReadLine(),
                             modell = Console.ReadLine(),
                             color = Console.ReadLine()
+                            
+                          
                         });
                         Console.WriteLine("Bilen är inlaggd\n");
                         break;
 
-                    case "e":
+                    case "e": // ändrar vilken bil man vill
                         Console.WriteLine("vilken bil vill du ändra på");
+
                         break;
 
-                    case "d":
-                        Console.WriteLine("Vilken bil vill du ta bort");
+                    case "d": // vilken bil man vill ta bort
+                        Console.WriteLine("Vilken bil vill du ta bort"); 
+                        foreach (Bsalu b in Bilar)
+                        {
+                            Console.WriteLine($"{b.make} {b.modell} {b.color}");
+                        }
+                        int remove = Convert.ToInt32(Console.ReadLine());
+                        Bilar.RemoveAt(remove -1);
+                        
                         break;
 
-                    case "s":
+                    case "s": // visar alla bilar du har laggt in
                         Console.WriteLine("Här är alla bilar vi har inne");
                         foreach (Bsalu b in Bilar)
                         {
@@ -65,9 +75,11 @@ namespace ACME_cars
 }
 public class Bsalu
 {
-    public string make;
-    public string modell;
-    public string color;
+    public string make { get; set; }
+    public string modell { get; set; }
+    public string color { get; set; }
+
+ 
 }
 
 
