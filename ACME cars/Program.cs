@@ -7,6 +7,7 @@ namespace ACME_cars
     {
         static void Main(string[] args)
         {
+
             List<Bsalu> Bilar = new List<Bsalu>();
             bool a = true;
             while (a)
@@ -22,16 +23,17 @@ namespace ACME_cars
                         break;
 
                     case "n": // Lägger in bilar i listan
-                        Console.WriteLine("Märke, modell och färg");
+                        Console.WriteLine("Märke, modell, färg och regnummer");
 
                         Bilar.Add(new Bsalu()
                         {
                             make = Console.ReadLine(),
                             modell = Console.ReadLine(),
-                            color = Console.ReadLine()
-
+                            color = Console.ReadLine(),
 
                         });
+
+
                         Console.WriteLine("Bilen är inlaggd\n");
                         break;
 
@@ -41,31 +43,30 @@ namespace ACME_cars
                         {
                             Console.WriteLine($"{b.make} {b.modell} {b.color}");
                         }
+                        int EditList = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Vad vill du ändra?");
                         string EditWhat = Console.ReadLine();
                         switch (EditWhat)
                         {
                             case "make":
-                                int EditMake = Convert.ToInt32(Console.ReadLine());
-                                Bilar.Insert(EditMake - 1, new Bsalu()
-                                {
-                                    make = Console.ReadLine(),
-                                });
+
+                                Console.WriteLine("vad ska det vara för märke\n");
+
+                                Bilar[EditList - 1].make = Console.ReadLine();
+
                                 break;
 
                             case "modell":
-                                int EditModell = Convert.ToInt32(Console.ReadLine());
-                                Bilar.Insert(EditModell - 1, new Bsalu()
-                                {
-                                    modell = Console.ReadLine(),
-                                });
+                                Console.WriteLine("vad ska det vara för modell\n");
+
+                                Bilar[EditList - 1].modell = Console.ReadLine();
                                 break;
 
                             case "color":
-                                int EditColor = Convert.ToInt32(Console.ReadLine());
-                                Bilar.Insert(EditColor - 1, new Bsalu()
-                                {
-                                    color = Console.ReadLine(),
-                                });
+                                Console.WriteLine("Vad ska det vara för färg");
+
+                                Bilar[EditList - 1].color = Console.ReadLine();
                                 break;
 
 
@@ -74,7 +75,7 @@ namespace ACME_cars
                                 break;
                         }
 
-                        Console.WriteLine("Bilen är ändrad\n");
+
                         break;
 
                     case "d": // vilken bil man vill ta bort
@@ -90,6 +91,8 @@ namespace ACME_cars
 
                     case "s": // visar alla bilar du har laggt in
                         Console.WriteLine("Här är alla bilar vi har inne");
+                        Console.WriteLine("===============================");
+                        Console.WriteLine($"{Bilar.Count}");
                         foreach (Bsalu b in Bilar)
                         {
                             Console.WriteLine($"{b.make} {b.modell} {b.color}");
@@ -116,8 +119,6 @@ public class Bsalu
     public string make { get; set; }
     public string modell { get; set; }
     public string color { get; set; }
-
+    public string reg { get; set; }
 
 }
-
-
