@@ -17,61 +17,61 @@ namespace ACME_cars
                 switch (orden)
                 {
                     case "x": // avslutar programmet
-                        Console.WriteLine("avsluta");
+                        Console.WriteLine("Ending");
                         a = false;
 
                         break;
 
                     case "n": // Lägger in bilar i listan
-                        Console.WriteLine("Märke, modell, färg och regnummer");
+                        Console.WriteLine("Make, modell, color and registration");
 
                         Bilar.Add(new Bsalu()
                         {
                             make = Console.ReadLine(),
                             modell = Console.ReadLine(),
-                            color = Console.ReadLine(),
-
+                            color = Console.ReadLine()
                         });
 
 
-                        Console.WriteLine("Bilen är inlaggd\n");
+                        Console.WriteLine("The car is added\n");
                         break;
 
                     case "e": // ändrar vilken bil man vill
-                        Console.WriteLine("vilken bil vill du ändra på");
+                        Console.WriteLine("What car do you want to edit");
                         foreach (Bsalu b in Bilar)
                         {
-                            Console.WriteLine($"{b.make} {b.modell} {b.color}");
+                            Console.WriteLine($"{b.make} {b.modell} {b.color} ");
+
                         }
                         int EditList = Convert.ToInt32(Console.ReadLine());
-
-                        Console.WriteLine("Vad vill du ändra?");
+                       
+                        Console.WriteLine("What do you wanna change?");
                         string EditWhat = Console.ReadLine();
                         switch (EditWhat)
                         {
                             case "make":
 
-                                Console.WriteLine("vad ska det vara för märke\n");
+                                Console.WriteLine("What make is it?\n");
 
                                 Bilar[EditList - 1].make = Console.ReadLine();
 
                                 break;
 
                             case "modell":
-                                Console.WriteLine("vad ska det vara för modell\n");
+                                Console.WriteLine("What modell is it?\n");
 
                                 Bilar[EditList - 1].modell = Console.ReadLine();
                                 break;
 
                             case "color":
-                                Console.WriteLine("Vad ska det vara för färg");
+                                Console.WriteLine("What color is it?");
 
                                 Bilar[EditList - 1].color = Console.ReadLine();
                                 break;
 
 
                             default:
-                                Console.WriteLine("Måste vara make, modell, eller color");
+                                Console.WriteLine("You must choose a make, modell or color");
                                 break;
                         }
 
@@ -79,18 +79,18 @@ namespace ACME_cars
                         break;
 
                     case "d": // vilken bil man vill ta bort
-                        Console.WriteLine("Vilken bil vill du ta bort");
+                        Console.WriteLine("What car do you want to delete");
                         foreach (Bsalu b in Bilar)
                         {
                             Console.WriteLine($"{b.make} {b.modell} {b.color}");
                         }
                         int remove = Convert.ToInt32(Console.ReadLine());
                         Bilar.RemoveAt(remove - 1);
-                        Console.WriteLine("bilen är borttagen\n");
+                        Console.WriteLine("The car is deleted\n");
                         break;
 
                     case "s": // visar alla bilar du har laggt in
-                        Console.WriteLine("Här är alla bilar vi har inne");
+                        Console.WriteLine("Here are all avalible cars");
                         Console.WriteLine("===============================");
                         Console.WriteLine($"{Bilar.Count}");
                         foreach (Bsalu b in Bilar)
@@ -104,7 +104,7 @@ namespace ACME_cars
                         break;
 
                     default:
-                        Console.WriteLine("Försök igen\n");
+                        Console.WriteLine("Try again\n");
                         break;
 
                 }
@@ -119,6 +119,5 @@ public class Bsalu
     public string make { get; set; }
     public string modell { get; set; }
     public string color { get; set; }
-    public string reg { get; set; }
 
 }
